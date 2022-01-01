@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Anne",
+        "salary": 10,
+        "kids": 1,
+        "money": 200,
+        "mh": 8,
+        "sh": 7,
+        "ph": 2,
+        "eh": 8,
+        "sph": 3
+    },
+    {
+        "name": "Rishabh",
+        "salary": 100,
+        "kids": 1,
+        "money": 80,
+        "mh": 9,
+        "sh": 7,
+        "ph": 4,
+        "eh": 7,
+        "sph": 1
+    },
+    {
+        "name": "Josh",
+        "salary": 50,
+        "kids": 2,
+        "money": 130,
+        "mh": 8,
+        "sh": 9,
+        "ph": 3,
+        "eh": 8,
+        "sph": 1
+    },
+    {
+        "name": "Jolene",
+        "salary": 50,
+        "kids": 3,
+        "money": 100,
+        "mh": 7,
+        "sh": 7,
+        "ph": 7,
+        "eh": 7,
+        "sph": 1
+    }
+]
