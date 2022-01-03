@@ -1,0 +1,30 @@
+[
+    {
+        "text": "After living alone for many years, you feel lonely. Your child/children have not been contacting you in a while, do you call your son/daughter or not?",
+        "yes": {
+            "text": "You chat on the phone for a long while, making up for all the lost time.",
+            "results": {}
+        },
+        "no": {
+            "text": "You don’t want to bother your child/children. Many elderly in sg feel lonely as they have no one to contact.",
+            "results": {
+                "eh": -1
+            }
+        }
+    },
+    {
+        "text": "As you feel ill, do you go for cheaper traditional Chinese medicine (TCM), or more expensive Western medicine?",
+        "yes": {
+            "text": "You go to the nearest TCM store and bought some herbs. After consuming them, you question their effectiveness.",
+            "results": {
+                "ph": -1
+            }
+        },
+        "no": {
+            "text": "You go to the nearest polyclinic. After consuming your prescribed and expensive drugs, you feel much better.",
+            "results": {
+                "money": -50
+            }
+        }
+    }
+]
