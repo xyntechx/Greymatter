@@ -8,6 +8,7 @@ const prompt = (query) => new Promise((resolve) => rl.question(query, resolve));
 
 const starter_characters = require("./starter_characters.json");
 const game_events = require("./game_events.json");
+const game_enders = require("./game_enders.json");
 const acronyms = require("./acronyms.json");
 
 async function game(char_num) {
@@ -16,7 +17,7 @@ async function game(char_num) {
         let event = game_events[i];
         if (event.payday == 1) {
             console.log("Payday!"); // LINK: display this text on the webpage
-            player.money += player.salary;
+            player.stats.money += player.salary;
             console.log(`Money: ${player.salary}`)
         } else {
             console.log(event.text); // LINK: display this text on the webpage
@@ -25,16 +26,26 @@ async function game(char_num) {
             let results = event.options[response].results;
             for (let change in results) {
                 console.log(`${acronyms[change]}: ${results[change]}`);
-                player[change] += results[change];
+                player.stats[change] += results[change];
             };
         };
         console.log(player); // LINK: display all stats, update when necessary
+        for (let stat in player.stats) {
+            if (player.stats[stat] <= 0) {
+                console.log(`Your ${acronyms[stat]} has reached 0.`);
+                console.log(game_enders[stat]);
+                rl.close();
+                return 0;
+            };
+        };
         console.log("\n");
     };
     rl.close();
+    return 0;
 };
 
 // LINK: create a button that calls the game() function
 (async () => {
     await game(0); // 0: Anne, 1: Rishabh, 2: Josh, 3: Jolene
+    console.log("Game end.");
 })();
