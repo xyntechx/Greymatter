@@ -2,7 +2,7 @@
 const readline = require("readline");
 const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
 });
 const prompt = (query) => new Promise((resolve) => rl.question(query, resolve));
 
@@ -18,17 +18,19 @@ async function game(char_num) {
         if (event.payday == 1) {
             console.log("Payday!"); // LINK: display this text on the webpage
             player.stats.money += player.salary;
-            console.log(`Money: ${player.salary}`)
+            console.log(`Money: ${player.salary}`);
         } else {
             console.log(event.text); // LINK: display this text on the webpage
-            let response = await prompt(`type ${event.options[0].option} / ${event.options[1].option}: `);
+            let response = await prompt(
+                `type ${event.options[0].option} / ${event.options[1].option}: `
+            );
             console.log(event.options[response].text); // LINK: create 2 buttons that input 0 or 1
             let results = event.options[response].results;
             for (let change in results) {
                 console.log(`${acronyms[change]}: ${results[change]}`);
                 player.stats[change] += results[change];
-            };
-        };
+            }
+        }
         console.log(player); // LINK: display all stats, update when necessary
         for (let stat in player.stats) {
             if (player.stats[stat] <= 0) {
@@ -36,13 +38,13 @@ async function game(char_num) {
                 console.log(game_enders[stat]);
                 rl.close();
                 return 0;
-            };
-        };
+            }
+        }
         console.log("\n");
-    };
+    }
     rl.close();
     return 0;
-};
+}
 
 // LINK: create a button that calls the game() function
 (async () => {
