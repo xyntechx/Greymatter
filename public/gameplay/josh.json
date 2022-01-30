@@ -1,0 +1,11 @@
+{
+    "initial": {
+        "money": 130,
+        "mental": -7,
+        "social": -9,
+        "physical": -3,
+        "emotional": -8,
+        "spiritual": -1
+    },
+    "game": {}
+}
