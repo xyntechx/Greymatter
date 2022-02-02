@@ -12,39 +12,90 @@
 .title {
     margin: 1rem;
     line-height: 1.15;
-    font-size: 2rem;
+    font-size: 4rem;
     text-align: center;
-}
-
-.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.hide {
-    display: none;
 }
 
 .text {
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
-    animation: expand 1s;
+    margin: 0 1rem;
 }
 
-@keyframes expand {
+.links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1rem;
+    margin: 1rem;
+}
+
+.buttonAnne,
+.buttonJolene,
+.buttonRishabh,
+.buttonJosh {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: reveal 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.buttonRishabh {
+    animation-delay: 1s;
+}
+
+.buttonJolene {
+    animation-delay: 2s;
+}
+
+.buttonJosh {
+    animation-delay: 3s;
+}
+
+.buttonAnne,
+.buttonJolene {
+    background-color: #fce47a;
+}
+
+.buttonRishabh,
+.buttonJosh {
+    background-color: #768efc;
+}
+
+.buttonAnne:hover,
+.buttonJolene:hover {
+    background-color: #cfbc64;
+}
+
+.buttonRishabh:hover,
+.buttonJosh:hover {
+    background-color: #667bda;
+}
+
+@keyframes reveal {
     from {
-        font-size: 0px;
+        opacity: 0;
     }
     to {
-        font-size: 20px;
+        opacity: 1;
     }
 }
 
 @media (max-width: 600px) {
-    .grid {
-        width: 100%;
-        flex-direction: column;
+    .links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .text {
+        font-size: 1.5rem;
     }
 }
