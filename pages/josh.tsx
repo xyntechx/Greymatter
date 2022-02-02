@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Game.module.css";
 import { useState, useEffect } from "react";
-import props from "../public/gameplay/anne.json";
+import props from "../public/gameplay/josh.json";
 
 const Josh: NextPage = () => {
     const [day, setDay] = useState(1);
@@ -16,7 +16,7 @@ const Josh: NextPage = () => {
     const [physical, setPhysical] = useState(props.initial.physical);
     const [emotional, setEmotional] = useState(props.initial.emotional);
     const [spiritual, setSpiritual] = useState(props.initial.spiritual);
-    const [game, setGame] = useState(props.game.day1);
+    const [game, setGame] = useState(props.game[0]);
 
     useEffect(() => {
         getGame();
@@ -31,56 +31,7 @@ const Josh: NextPage = () => {
     const [noConsequence, setNoConsequence] = useState(game.noConsequence);
 
     const getGame = async () => {
-        switch (day) {
-            case 1:
-                setGame(props.game.day1);
-                break;
-            case 2:
-                setGame(props.game.day2);
-                break;
-            case 3:
-                setGame(props.game.day3);
-                break;
-            case 4:
-                setGame(props.game.day4);
-                break;
-            case 5:
-                setGame(props.game.day5);
-                break;
-            case 6:
-                setGame(props.game.day6);
-                break;
-            case 7:
-                setGame(props.game.day7);
-                break;
-            case 8:
-                setGame(props.game.day8);
-                break;
-            case 9:
-                setGame(props.game.day9);
-                break;
-            case 10:
-                setGame(props.game.day10);
-                break;
-            case 11:
-                setGame(props.game.day11);
-                break;
-            case 12:
-                setGame(props.game.day12);
-                break;
-            case 13:
-                setGame(props.game.day13);
-                break;
-            case 14:
-                setGame(props.game.day14);
-                break;
-            case 15:
-                setGame(props.game.day15);
-                break;
-            case 16:
-                setGame(props.game.day16);
-                break;
-        }
+        setGame(props.game[day]);
         setQuestion(game.question);
         setYesChoice(game.yesChoice);
         setYesExplanation(game.yesExplanation);
@@ -125,7 +76,7 @@ const Josh: NextPage = () => {
     };
 
     const answer = async (choice: string) => {
-        if (day === 1) setDay(day + 1); // because there is a delay when setDay is called for the first time
+        if (day === 0) setDay(day + 1); // because there is a delay when setDay is called for the first time
 
         if (choice === yesChoice) {
             setAnswered(yesChoice);

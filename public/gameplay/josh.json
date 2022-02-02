@@ -1,11 +1,380 @@
 {
     "initial": {
         "money": 130,
-        "mental": -7,
-        "social": -9,
-        "physical": -3,
-        "emotional": -8,
-        "spiritual": -1
+        "mental": 7,
+        "social": 9,
+        "physical": 3,
+        "emotional": 8,
+        "spiritual": 1
     },
-    "game": {}
+    "game": [
+        {
+            "question": "After living alone for many years, you feel lonely. Your children have not been contacting you in a while, do you call them?",
+            "yesChoice": "Yes",
+            "yesExplanation": "You chat on the phone for a long while, making up for all the lost time.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "No",
+            "noExplanation": "You don't want to bother your children. Many elderly in sg feel lonely as they have no one to contact.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "As you feel ill, do you go for cheaper traditional Chinese medicine (TCM), or more expensive Western medicine?",
+            "yesChoice": "Chinese",
+            "yesExplanation": "You go to the nearest TCM store and bought some herbs. After consuming them, you question their effectiveness.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Western",
+            "noExplanation": "You go to the nearest polyclinic. After consuming your prescribed and expensive  drugs, you feel much better.",
+            "noConsequence": {
+                "money": -50,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "The booster shot/vaccine is now available, do you take them, knowing the side effects and potential risks?",
+            "yesChoice": "Take It",
+            "yesExplanation": "Your went to the community club and got your jab. However, due to the aching side effects you couldn't go out with friends.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": -1,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Reject It",
+            "noExplanation": "You do not believe in the effectiveness of the vaccine; instead, you went out with friends for the whole day.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "In a blink of an eye, Christmas Eve is here! Would you want to get your children a gift for Christmas?",
+            "yesChoice": "Buy a $50 gift",
+            "yesExplanation": "You spent your money on a gift and gave it to your children on Christmas. They thank you gratefully.",
+            "yesConsequence": {
+                "money": -50,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "No",
+            "noExplanation": "You kept your money to yourself, believing your children too grown-up to be bought gifts for. This hurts your mentality.",
+            "noConsequence": {
+                "money": 0,
+                "mental": -1,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "New Years is here! As you wait for the countdown,  you start to have runny nose and difficulty breathing all of a sudden. Do you visit the doctor or do you continue with New Year Celebrations?",
+            "yesChoice": "Visit Doctor",
+            "yesExplanation": "You went to your local family clinic for check-up and was diagnosed with the flu. You took your medications and rested for a few days.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": -1,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Celebrate",
+            "noExplanation": "You ignored your symptoms and continued to celebrate New Years. Your frail body had to fight the germs really hard.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "You realise you are running low on savings, do you ask your family for some allowance?",
+            "yesChoice": "Ask",
+            "yesExplanation": "You picked up the phone and requested money from your children. They hesitantly gave it to you after an earful, you feel ashamed",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Ask",
+            "noExplanation": "You find it pitiful to ask your children for money and refused to do so. You paid for your monthly bills by yourself.",
+            "noConsequence": {
+                "money": -25,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "You haven't seen your children in a while since New Years, do you ask them to come over to visit you?",
+            "yesChoice": "Ask",
+            "yesExplanation": "Your children came to pay you a visit, though they did find it as an excuse to let you babysit their newborn (who is a handful).",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Ask",
+            "noExplanation": "You refrain from calling them and stayed at home all day, feeling lonely and miserable.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "Your grandchild has an upcoming important performance at the Esplanade, would you risk your health to go and watch it given the high number of covid cases, and high entrance fee?",
+            "yesChoice": "Watch",
+            "yesExplanation": "You showed up on the day and enjoyed the show. Although you ended up testing positive for COVID-19, and have to be under SHN for 2 weeks.",
+            "yesConsequence": {
+                "money": -10,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Watch",
+            "noExplanation": "You decided not to go watch and missed out on the performance. Staying at home made you feel lonely too.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": -1,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "Your children have encouraged you to lead an active lifestyle, would you go on walks around your neighbourhood on a regular basis?",
+            "yesChoice": "Walk",
+            "yesExplanation": "You spend some time brisk walking at the nearby park connector. You feel more energised but you did had a bad fall tripping over uneven tiles.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Walk",
+            "noExplanation": "You stayed at home instead. You can feel yourself losing something in your head slowly.",
+            "noConsequence": {
+                "money": 0,
+                "mental": -1,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "Your child made a phone call wishing to borrow money from you to buy a house, they claim $100 should be enough to cover the miscellaneous fee, would you agree to their request?",
+            "yesChoice": "Agree",
+            "yesExplanation": "You willingly fork out the money for your child. They thank you and leave you alone afterwards.",
+            "yesConsequence": {
+                "money": -100,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Disagree",
+            "noExplanation": "You did not hand over the money. Your child called you stingy and useless. It deeply hurt you. You feel that your child is eyeing your assets and would neglect you completely after they get your money.",
+            "noConsequence": {
+                "money": 0,
+                "mental": -1,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "You are bored. What do you plan to do with your free time?",
+            "yesChoice": "Religion",
+            "yesExplanation": "You go to your place of religion and spent some time there strengthening your belief.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Side Job",
+            "noExplanation": "You take on a part-time job as a SDA at the nearby shopping mall.",
+            "noConsequence": {
+                "money": 25,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": -1
+            }
+        },
+        {
+            "question": "A person just moved into your neighbourhood, do you greet and befriend them?",
+            "yesChoice": "Greet",
+            "yesExplanation": "You spend some time getting to know and really connecting with your new neighbor... Only to find out he was temporarily staying there and will be moving again",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            },
+            "noChoice": "Ignore",
+            "noExplanation": "You ignored their arrival and instead hang out with your old friends instead.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": -1,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "OH NO! Your child recently got into a serious accident. They need immediate treatment or they might not make it through. You have to do something for their surgery.",
+            "yesChoice": "Pay $100",
+            "yesExplanation": "Your child pulled through the process and managed to survive. You feel ever-so elated.",
+            "yesConsequence": {
+                "money": -100,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't pay",
+            "noExplanation": "Without the proper treatment, your child wasn't able to make it. The remorse and loneliness afterwards haunts you overwhelmingly.",
+            "noConsequence": {
+                "money": -1000,
+                "mental": -1000,
+                "social": -1000,
+                "physical": -1000,
+                "emotional": -1000,
+                "spiritual": -1000
+            }
+        },
+        {
+            "question": "Your children want you to sell your house and invite you to stay with them, would you agree?",
+            "yesChoice": "Sell",
+            "yesExplanation": "You sell your house and moved in with your family. They did keep some of your money as savings but you are happy you aren’t alone anymore. If your children are unfilial and kick you out, you have no home to go to. You also have restricted freedom and may have to do strenuous house chores",
+            "yesConsequence": {
+                "money": 25,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Keep",
+            "noExplanation": "You refuse their offer, opting to stay alone in your house.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "The topic of pets was brought up in a conversation your had, do you consider buying a pet to keep you company?",
+            "yesChoice": "Buy",
+            "yesExplanation": "You buy a cute little corgi. It is currently untrained and too playful for your taste, it made a mess everywhere that you had to tirelessly clean up.",
+            "yesConsequence": {
+                "money": -50,
+                "mental": 0,
+                "social": 0,
+                "physical": -1,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Buy",
+            "noExplanation": "You do not buy a pet. The loneliness you feel with the absence of a companion is overwhelming.",
+            "noConsequence": {
+                "money": 0,
+                "mental": -1,
+                "social": 0,
+                "physical": 0,
+                "emotional": -1,
+                "spiritual": 0
+            }
+        },
+        {
+            "question": "You feel like attending a place of Religious worship, but there’s a high surge of covid-19 cases in the country, will you still go despite the high surge in cases?",
+            "yesChoice": "Go",
+            "yesExplanation": "You faithfully went to your religious institution despite the risk. When you went home, you realised you were completely fine.",
+            "yesConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": 0
+            },
+            "noChoice": "Don't Go",
+            "noExplanation": "You were too mindful of COVID-19 to go, so you ended up staying at home instead.",
+            "noConsequence": {
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": 0,
+                "spiritual": -1
+            }
+        }
+    ]
 }
