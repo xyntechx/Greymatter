@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import styles from "../styles/Game.module.css";
 import { useState, useEffect } from "react";
 import props from "../public/gameplay/anne.json";
 
 const Anne: NextPage = () => {
     const [day, setDay] = useState(1);
-    const [answered, setAnswered] = useState(false);
+    const [answered, setAnswered] = useState("");
     const [gameOver, setGameOver] = useState(false);
 
     const [money, setMoney] = useState(props.initial.money);
@@ -124,14 +125,15 @@ const Anne: NextPage = () => {
     };
 
     const answer = async (choice: string) => {
-        setAnswered(true);
         if (day === 1) setDay(day + 1); // because there is a delay when setDay is called for the first time
 
         if (choice === yesChoice) {
+            setAnswered(yesChoice);
             for (const stat in yesConsequence) {
                 setStat(stat, yesConsequence);
             }
         } else {
+            setAnswered(noChoice);
             for (const stat in noConsequence) {
                 setStat(stat, noConsequence);
             }
@@ -139,7 +141,7 @@ const Anne: NextPage = () => {
     };
 
     const next = () => {
-        setAnswered(false);
+        setAnswered("");
         setDay(day + 1);
     };
 
@@ -153,50 +155,111 @@ const Anne: NextPage = () => {
 
             {gameOver || day === 17 ? (
                 <main className={styles.main}>
-                    <h1>Game Over</h1>
+                    <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
-                        <p>
-                            Without the proper treatment, your child wasn&apos;t able
-                            to make it. The remorse and loneliness afterwards
-                            haunts you overwhelmingly.
+                        <p className={styles.text}>
+                            Without the proper treatment, your child wasn&apos;t
+                            able to make it. The remorse and loneliness
+                            afterwards haunts you overwhelmingly.
                         </p>
                     ) : (
-                        <p>Thanks for playing!</p>
+                        <p className={styles.text}>
+                            You have completed your journey!
+                        </p>
                     )}
+                    <br />
+                    <Link href="/">
+                        <a className={styles.buttonNext}>Back to Home</a>
+                    </Link>
                 </main>
             ) : (
                 <main className={styles.main}>
                     <h1 className={styles.title}>Anne</h1>
-                    {money >= 0 ? (
-                        <p>Money: ${money}</p>
-                    ) : (
-                        <p>Money: -${-money}</p>
-                    )}
-                    <p>Mental Health: {mental}</p>
-                    <p>Social Health: {social}</p>
-                    <p>Physical Health: {physical}</p>
-                    <p>Emotional Health: {emotional}</p>
-                    <p>Spiritual Health: {spiritual}</p>
-                    <h1 className={styles.title}>{question}</h1>
+                    <section className={styles.stats}>
+                        {money >= 0 ? (
+                            <p className={styles.stat}>
+                                Money <br /> ${money}
+                            </p>
+                        ) : (
+                            <p className={styles.stat}>
+                                Money <br /> -${-money}
+                            </p>
+                        )}
+                        <p className={styles.stat}>
+                            Mental Health <br /> {mental}
+                        </p>
+                        <p className={styles.stat}>
+                            Social Health <br /> {social}
+                        </p>
+                        <p className={styles.stat}>
+                            Physical Health <br /> {physical}
+                        </p>
+                        <p className={styles.stat}>
+                            Emotional Health <br /> {emotional}
+                        </p>
+                        <p className={styles.stat}>
+                            Spiritual Health <br /> {spiritual}
+                        </p>
+                    </section>
 
-                    {answered ? (
+                    {!answered ? (
                         <>
-                            <p>{yesExplanation}</p>
-                            <p>{noExplanation}</p>
+                            <p className={styles.text}>
+                                <b>Scenario</b>
+                            </p>
+                            <p className={styles.text}>{question}</p>
                         </>
                     ) : (
                         <></>
                     )}
 
-                    <button onClick={() => answer(yesChoice)}>
-                        {yesChoice}
-                    </button>
-                    <button onClick={() => answer(noChoice)}>{noChoice}</button>
-                    {answered ? (
-                        <button onClick={next}>Next Question</button>
+                    {answered === yesChoice ? (
+                        <>
+                            <p className={styles.text}>
+                                <b>Response</b>
+                            </p>
+                            <p className={styles.text}>{yesExplanation}</p>
+                        </>
                     ) : (
                         <></>
                     )}
+
+                    {answered === noChoice ? (
+                        <>
+                            <p className={styles.text}>
+                                <b>Response</b>
+                            </p>
+                            <p className={styles.text}>{noExplanation}</p>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+
+                    <section className={styles.buttons}>
+                        {answered ? (
+                            <button
+                                className={styles.buttonNext}
+                                onClick={next}
+                            >
+                                Next Question
+                            </button>
+                        ) : (
+                            <div className={styles.choices}>
+                                <button
+                                    className={styles.buttonYes}
+                                    onClick={() => answer(yesChoice)}
+                                >
+                                    {yesChoice}
+                                </button>
+                                <button
+                                    className={styles.buttonNo}
+                                    onClick={() => answer(noChoice)}
+                                >
+                                    {noChoice}
+                                </button>
+                            </div>
+                        )}
+                    </section>
                 </main>
             )}
         </div>
