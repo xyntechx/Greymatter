@@ -1,11 +1,11 @@
 {
     "initial": {
         "money": 200,
-        "mental": -8,
-        "social": -7,
-        "physical": -2,
-        "emotional": -8,
-        "spiritual": -3
+        "mental": 8,
+        "social": 7,
+        "physical": 2,
+        "emotional": 8,
+        "spiritual": 3
     },
     "game": {
         "day1": {
@@ -80,9 +80,9 @@
         "day4": {
             "question": "In a blink of an eye, Christmas Eve is here! Would you want to get your child/children a gift for Christmas?",
             "yesChoice": "Yes",
-            "yesExplanation": "You spent your money on a gift and gave it to your child/children on Christmas. He/She/They thank you gratefully.",
+            "yesExplanation": "You spent your money on a gift and gave it to your child/children on Christmas. He/She/They thank you gratefully. Also, you have received $10 after payday!",
             "yesConsequence": {
-                "money": -50,
+                "money": -40,
                 "mental": 0,
                 "social": 0,
                 "physical": 0,
@@ -90,9 +90,9 @@
                 "spiritual": 0
             },
             "noChoice": "No",
-            "noExplanation": "You kept your money to yourself, believing your child/children too grown-up to be bought gifts for. This hurts your mentality.",
+            "noExplanation": "You kept your money to yourself, believing your child/children too grown-up to be bought gifts for. This hurts your mentality. Also, you have received $10 after payday!",
             "noConsequence": {
-                "money": 0,
+                "money": 10,
                 "mental": -1,
                 "social": 0,
                 "physical": 0,
@@ -172,9 +172,9 @@
         "day8": {
             "question": "Your grandchild has an upcoming important performance at the Esplanade, would you risk your health to go and watch it given the high number of covid cases, and high entrance fee?",
             "yesChoice": "Watch",
-            "yesExplanation": "You showed up on the day and enjoyed the show. Although you ended up testing positive for COVID-19, and have to be under SHN for 2 weeks.",
+            "yesExplanation": "You showed up on the day and enjoyed the show. Although you ended up testing positive for COVID-19, and have to be under SHN for 2 weeks. Also, you have received $10 after payday!",
             "yesConsequence": {
-                "money": -10,
+                "money": 0,
                 "mental": 0,
                 "social": 0,
                 "physical": -1,
@@ -182,9 +182,9 @@
                 "spiritual": 0
             },
             "noChoice": "Don't Watch",
-            "noExplanation": "You decided not to go watch and missed out on the performance. Staying at home made you feel lonely too.",
+            "noExplanation": "You decided not to go watch and missed out on the performance. Staying at home made you feel lonely too. Also, you have received $10 after payday!",
             "noConsequence": {
-                "money": 0,
+                "money": 10,
                 "mental": 0,
                 "social": -1,
                 "physical": 0,
