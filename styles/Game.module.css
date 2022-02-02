@@ -1,4 +1,4 @@
-.main {
+.main, .mainEnd {
     width: 100vw;
     min-height: 100vh;
     padding: 4rem 0;
@@ -7,6 +7,10 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.mainEnd {
+    justify-content: center;
 }
 
 .title {

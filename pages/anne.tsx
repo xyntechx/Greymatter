@@ -163,7 +163,7 @@ const Anne: NextPage = () => {
             </Head>
 
             {gameOver || day === 17 ? (
-                <main className={styles.main}>
+                <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
                         <>
@@ -241,9 +241,15 @@ const Anne: NextPage = () => {
                 <main className={styles.main}>
                     <h1 className={styles.title}>Anne</h1>
                     <section className={styles.stats}>
-                        <p className={styles.stat}>
-                            Money <br /> ${money}
-                        </p>
+                        {money >= 0 ? (
+                            <p className={styles.stat}>
+                                Money <br /> ${money}
+                            </p>
+                        ) : (
+                            <p className={styles.stat}>
+                                Money <br /> -${-money}
+                            </p>
+                        )}
                         <p className={styles.stat}>
                             Mental Health <br /> {mental}
                         </p>

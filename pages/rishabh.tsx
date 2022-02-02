@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Game.module.css";
 import { useState, useEffect } from "react";
-import props from "../public/gameplay/anne.json";
+import props from "../public/gameplay/rishabh.json";
 
 const Rishabh: NextPage = () => {
     const [day, setDay] = useState(1);
@@ -103,23 +103,23 @@ const Rishabh: NextPage = () => {
     ) => {
         switch (stat) {
             case "money":
-                if (consequence.money === -1000) setGameOver(true);
                 setMoney(money + consequence.money);
+                if (money <= 0) setGameOver(true);
             case "mental":
-                if (consequence.mental === -1000) setGameOver(true);
                 setMental(mental + consequence.mental);
+                if (mental <= 0) setGameOver(true);
             case "social":
-                if (consequence.social === -1000) setGameOver(true);
                 setSocial(social + consequence.social);
+                if (social <= 0) setGameOver(true);
             case "physical":
-                if (consequence.physical === -1000) setGameOver(true);
                 setPhysical(physical + consequence.physical);
+                if (physical <= 0) setGameOver(true);
             case "emotional":
-                if (consequence.emotional === -1000) setGameOver(true);
                 setEmotional(emotional + consequence.emotional);
+                if (emotional <= 0) setGameOver(true);
             case "spiritual":
-                if (consequence.spiritual === -1000) setGameOver(true);
                 setSpiritual(spiritual + consequence.spiritual);
+                if (spiritual <= 0) setGameOver(true);
         }
         PageTransitionEvent;
     };
@@ -143,6 +143,15 @@ const Rishabh: NextPage = () => {
     const next = () => {
         setAnswered("");
         setDay(day + 1);
+        if (
+            money <= 0 ||
+            mental <= 0 ||
+            social <= 0 ||
+            physical <= 0 ||
+            emotional <= 0 ||
+            spiritual <= 0
+        )
+            setGameOver(true);
     };
 
     return (
@@ -154,14 +163,70 @@ const Rishabh: NextPage = () => {
             </Head>
 
             {gameOver || day === 17 ? (
-                <main className={styles.main}>
+                <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
-                        <p className={styles.text}>
-                            Without the proper treatment, your child wasn&apos;t
-                            able to make it. The remorse and loneliness
-                            afterwards haunts you overwhelmingly.
-                        </p>
+                        <>
+                            {money <= 0 ? (
+                                <p className={styles.text}>
+                                    Make sure to save up your money next time!
+                                    You have become too broke to continue.
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+
+                            {mental <= 0 ? (
+                                <p className={styles.text}>
+                                    Take care of your mental health next time!
+                                    You have been diagnosed with one of/some of
+                                    the common mental illness(es) the elderly
+                                    are susceptible to.
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+
+                            {social <= 0 ? (
+                                <p className={styles.text}>
+                                    Seize the opportunities to socialise with
+                                    your friends next time! You have become too
+                                    lonely to continue.
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+
+                            {physical <= 0 ? (
+                                <p className={styles.text}>
+                                    Take care of your physical health next time!
+                                    You have been admitted to the hospital due
+                                    to the complications your body has
+                                    sustained...
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+
+                            {emotional <= 0 ? (
+                                <p className={styles.text}>
+                                    Take care of your emotions next time! You
+                                    have been too overwhelmed with negative
+                                    feelings to continue.
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+
+                            {spiritual <= 0 ? (
+                                <p className={styles.text}>
+                                    Be faithful to your beliefs next time! You
+                                    have become possessed.
+                                </p>
+                            ) : (
+                                <></>
+                            )}
+                        </>
                     ) : (
                         <p className={styles.text}>
                             You have completed your journey!
