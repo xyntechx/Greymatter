@@ -82,7 +82,7 @@
             "yesChoice": "Buy a $50 gift",
             "yesExplanation": "You spent your money on a gift and gave it to your child on Christmas. They thank you gratefully.",
             "yesConsequence": {
-                "money": -50,
+                "money": -40,
                 "mental": 0,
                 "social": 0,
                 "physical": 0,
@@ -92,7 +92,7 @@
             "noChoice": "No",
             "noExplanation": "You kept your money to yourself, believing your child too grown-up to be bought gifts for. This hurts your mentality.",
             "noConsequence": {
-                "money": 0,
+                "money": 10,
                 "mental": -1,
                 "social": 0,
                 "physical": 0,
@@ -172,9 +172,9 @@
         {
             "question": "Your grandchild has an upcoming important performance at the Esplanade, would you risk your health to go and watch it given the high number of covid cases, and high entrance fee?",
             "yesChoice": "Watch",
-            "yesExplanation": "You showed up on the day and enjoyed the show. Although you ended up testing positive for COVID-19, and have to be under SHN for 2 weeks.",
+            "yesExplanation": "You showed up on the day and enjoyed the show. Although you ended up testing positive for COVID-19, and have to be under SHN for 2 weeks. Also, you have received $10 after payday!",
             "yesConsequence": {
-                "money": -10,
+                "money": 0,
                 "mental": 0,
                 "social": 0,
                 "physical": -1,
@@ -182,9 +182,9 @@
                 "spiritual": 0
             },
             "noChoice": "Don't Watch",
-            "noExplanation": "You decided not to go watch and missed out on the performance. Staying at home made you feel lonely too.",
+            "noExplanation": "You decided not to go watch and missed out on the performance. Staying at home made you feel lonely too. Also, you have received $10 after payday!",
             "noConsequence": {
-                "money": 0,
+                "money": 10,
                 "mental": 0,
                 "social": -1,
                 "physical": 0,
@@ -299,18 +299,18 @@
             "noChoice": "Don't pay",
             "noExplanation": "Without the proper treatment, your child wasn't able to make it. The remorse and loneliness afterwards haunts you overwhelmingly.",
             "noConsequence": {
-                "money": -1000,
-                "mental": -1000,
-                "social": -1000,
-                "physical": -1000,
-                "emotional": -1000,
-                "spiritual": -1000
+                "money": 0,
+                "mental": 0,
+                "social": 0,
+                "physical": 0,
+                "emotional": -20,
+                "spiritual": 0
             }
         },
         {
             "question": "Your child wants you to sell your house and invite you to stay with them, would you agree?",
             "yesChoice": "Sell",
-            "yesExplanation": "You sell your house and moved in with your family. They did keep some of your money as savings but you are happy you aren’t alone anymore. If your child is unfilial and kicks you out, you have no home to go to. You also have restricted freedom and may have to do strenuous house chores",
+            "yesExplanation": "You sell your house and moved in with your family. They did keep some of your money as savings but you are happy you aren't alone anymore. If children are unfilial and kick you out, you have no home to go to. You also have restricted freedom and may have to do strenuous house chores",
             "yesConsequence": {
                 "money": 25,
                 "mental": 0,
