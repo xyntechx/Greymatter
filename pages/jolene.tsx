@@ -35,7 +35,6 @@ const Jolene: NextPage = () => {
     const [game, setGame] = useState(props.game[0]);
     const [question, setQuestion] = useState(game.question);
     const [options, setOptions] = useState(game.options as option[]);
-    const [optionChoice, setOptionChoice] = useState(options[0].choice);
     const [optionExplanation, setOptionExplanation] = useState(options[0].explanation);
     const [optionConsequence, setOptionConsequence] = useState(options[0].consequence);
 

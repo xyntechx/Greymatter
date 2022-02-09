@@ -8,9 +8,10 @@ import styles from "../styles/Game.module.css";
 import props from "../public/gameplay/anne.json";
 
 const Anne: NextPage = () => {
-    const [day, setDay] = useState(1);
+    const [day, setDay] = useState(0);
     const [answered, setAnswered] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [imgSrc, setImgSrc] = useState("/images/0.png");
 
     const [money, setMoney] = useState(props.initial.money);
     const [mental, setMental] = useState(props.initial.mental);
@@ -35,7 +36,6 @@ const Anne: NextPage = () => {
     const [game, setGame] = useState(props.game[0]);
     const [question, setQuestion] = useState(game.question);
     const [options, setOptions] = useState(game.options as option[]);
-    const [optionChoice, setOptionChoice] = useState(options[0].choice);
     const [optionExplanation, setOptionExplanation] = useState(options[0].explanation);
     const [optionConsequence, setOptionConsequence] = useState(options[0].consequence);
 
@@ -102,6 +102,8 @@ const Anne: NextPage = () => {
     const next = () => {
         setAnswered(false);
         setDay(day + 1);
+        console.log(day);
+        setImgSrc(`/images/${day}.png`);
         if (
             money <= 0 ||
             mental <= 0 ||
@@ -121,7 +123,9 @@ const Anne: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {gameOver || day === 18 ? (
+            {gameOver || day === 19 ? (
+                // TO FIX: when set final day to 18, last event is not shown
+                //         but when set to 19 error 
                 <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
@@ -243,6 +247,10 @@ const Anne: NextPage = () => {
                                 <b>Response</b>
                             </p>
                             <p className={styles.text}>{optionExplanation}</p>
+                            <div className="imageDiv">
+                                <Image src={imgSrc} height={450} width={800}/> 
+                                {/* find a way to make this responsive and fit*/}
+                            </div>
                         </>
                     ) : (
                         <></>
