@@ -1,13 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Game.module.css";
+import Image from "next/image";
 import { useState, useEffect } from "react";
+
+import styles from "../styles/Game.module.css";
 import props from "../public/gameplay/josh.json";
 
 const Josh: NextPage = () => {
     const [day, setDay] = useState(1);
-    const [answered, setAnswered] = useState("");
+    const [answered, setAnswered] = useState(false);
     const [gameOver, setGameOver] = useState(false);
 
     const [money, setMoney] = useState(props.initial.money);
@@ -16,30 +18,44 @@ const Josh: NextPage = () => {
     const [physical, setPhysical] = useState(props.initial.physical);
     const [emotional, setEmotional] = useState(props.initial.emotional);
     const [spiritual, setSpiritual] = useState(props.initial.spiritual);
+
+    type option = {
+        choice: string;
+        explanation: string;
+        consequence: {
+            money: number;
+            mental: number;
+            social: number;
+            physical: number;
+            emotional: number;
+            spiritual: number;
+        }
+    }
+
     const [game, setGame] = useState(props.game[0]);
+    const [question, setQuestion] = useState(game.question);
+    const [options, setOptions] = useState(game.options as option[]);
+    const [optionChoice, setOptionChoice] = useState(options[0].choice);
+    const [optionExplanation, setOptionExplanation] = useState(options[0].explanation);
+    const [optionConsequence, setOptionConsequence] = useState(options[0].consequence);
 
     useEffect(() => {
         getGame();
     }, [day]);
-
-    const [question, setQuestion] = useState(game.question);
-    const [yesChoice, setYesChoice] = useState(game.yesChoice);
-    const [yesExplanation, setYesExplanation] = useState(game.yesExplanation);
-    const [yesConsequence, setYesConsequence] = useState(game.yesConsequence);
-    const [noChoice, setNoChoice] = useState(game.noChoice);
-    const [noExplanation, setNoExplanation] = useState(game.noExplanation);
-    const [noConsequence, setNoConsequence] = useState(game.noConsequence);
-
     const getGame = async () => {
         setGame(props.game[day]);
         setQuestion(game.question);
-        setYesChoice(game.yesChoice);
-        setYesExplanation(game.yesExplanation);
-        setYesConsequence(game.yesConsequence);
-        setNoChoice(game.noChoice);
-        setNoExplanation(game.noExplanation);
-        setNoConsequence(game.noConsequence);
+        setOptions(game.options as option[]);
     };
+
+    useEffect(() => {
+        getConsequences();
+    }, [optionConsequence]);
+    const getConsequences = async () => {
+        for (const stat in optionConsequence) {
+            setStat(stat, optionConsequence);
+        }
+    }
 
     const setStat = async (
         stat: string,
@@ -75,24 +91,16 @@ const Josh: NextPage = () => {
         PageTransitionEvent;
     };
 
-    const answer = async (choice: string) => {
+    const answer = async (optionId: number) => {
         if (day === 0) setDay(day + 1); // because there is a delay when setDay is called for the first time
 
-        if (choice === yesChoice) {
-            setAnswered(yesChoice);
-            for (const stat in yesConsequence) {
-                setStat(stat, yesConsequence);
-            }
-        } else {
-            setAnswered(noChoice);
-            for (const stat in noConsequence) {
-                setStat(stat, noConsequence);
-            }
-        }
+        setAnswered(true);
+        setOptionExplanation(options[optionId].explanation);
+        setOptionConsequence(options[optionId].consequence);
     };
 
     const next = () => {
-        setAnswered("");
+        setAnswered(false);
         setDay(day + 1);
         if (
             money <= 0 ||
@@ -113,7 +121,7 @@ const Josh: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {gameOver || day === 17 ? (
+            {gameOver || day === 18 ? (
                 <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
@@ -190,7 +198,7 @@ const Josh: NextPage = () => {
                 </main>
             ) : (
                 <main className={styles.main}>
-                    <h1 className={styles.title}>Josh</h1>
+                    <h1 className={styles.title}>Anne</h1>
                     <section className={styles.stats}>
                         {money >= 0 ? (
                             <p className={styles.stat}>
@@ -229,28 +237,16 @@ const Josh: NextPage = () => {
                         <></>
                     )}
 
-                    {answered === yesChoice ? (
+                    {answered ? (
                         <>
                             <p className={styles.text}>
                                 <b>Response</b>
                             </p>
-                            <p className={styles.text}>{yesExplanation}</p>
+                            <p className={styles.text}>{optionExplanation}</p>
                         </>
                     ) : (
                         <></>
                     )}
-
-                    {answered === noChoice ? (
-                        <>
-                            <p className={styles.text}>
-                                <b>Response</b>
-                            </p>
-                            <p className={styles.text}>{noExplanation}</p>
-                        </>
-                    ) : (
-                        <></>
-                    )}
-
                     <section className={styles.buttons}>
                         {answered ? (
                             <button
@@ -261,18 +257,11 @@ const Josh: NextPage = () => {
                             </button>
                         ) : (
                             <div className={styles.choices}>
-                                <button
-                                    className={styles.buttonYes}
-                                    onClick={() => answer(yesChoice)}
-                                >
-                                    {yesChoice}
-                                </button>
-                                <button
-                                    className={styles.buttonNo}
-                                    onClick={() => answer(noChoice)}
-                                >
-                                    {noChoice}
-                                </button>
+                                {options.map((option, id) => (
+                                    <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)}>
+                                        {option.choice}
+                                    </button>
+                                ))}
                             </div>
                         )}
                     </section>
