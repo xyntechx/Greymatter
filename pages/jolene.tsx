@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../styles/Game.module.css";
 import { useState, useEffect } from "react";
 import props from "../public/gameplay/jolene.json";
@@ -9,6 +10,7 @@ const Jolene: NextPage = () => {
     const [day, setDay] = useState(1);
     const [answered, setAnswered] = useState("");
     const [gameOver, setGameOver] = useState(false);
+    const [imgSrc, setImgSrc] = useState("/images/0.png");
 
     const [money, setMoney] = useState(props.initial.money);
     const [mental, setMental] = useState(props.initial.mental);
@@ -143,6 +145,7 @@ const Jolene: NextPage = () => {
     const next = () => {
         setAnswered("");
         setDay(day + 1);
+        setImgSrc(`/images/${day}.png`);
         if (
             money <= 0 ||
             mental <= 0 ||
@@ -284,6 +287,7 @@ const Jolene: NextPage = () => {
                                 <b>Response</b>
                             </p>
                             <p className={styles.text}>{yesExplanation}</p>
+                            <Image src={imgSrc} height={200} width={350} />
                         </>
                     ) : (
                         <></>
@@ -295,6 +299,7 @@ const Jolene: NextPage = () => {
                                 <b>Response</b>
                             </p>
                             <p className={styles.text}>{noExplanation}</p>
+                            <Image src={imgSrc} height={200} width={350} />
                         </>
                     ) : (
                         <></>
