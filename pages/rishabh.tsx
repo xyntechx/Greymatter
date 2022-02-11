@@ -120,7 +120,7 @@ const Rishabh: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {gameOver || day === 18 ? (
+            {gameOver || day === 20 ? (
                 <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (

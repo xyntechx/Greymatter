@@ -270,6 +270,35 @@
             ]
         },
         {
+            "question": "Your gas stove has recently stopped working, you have to get a repairman to fix it in order to prepare meals.",
+            "options": [
+                {
+                    "choice": "Pay",
+                    "explanation": "You hired a repairman, Mr Sins, to come and fix your broken stove. You can cook once again.",
+                    "consequences": {
+                        "money": -50,
+                        "mental": 0,
+                        "social": 0,
+                        "physical": 0,
+                        "emotional": 0,
+                        "spiritual": 0
+                    }
+                },
+                {
+                    "choice": "Don't Pay",
+                    "explanation": "You ended up not hiring a repairman. Your stove remains broken and thus you couldn’t prepare any meals, starving yourself.",
+                    "consequences": {
+                        "money": 0,
+                        "mental": 0,
+                        "social": 0,
+                        "physical": -1,
+                        "emotional": 0,
+                        "spiritual": 0
+                    }
+                }
+            ]
+        },
+        {
             "question": "Payday!",
             "options": [
                 {

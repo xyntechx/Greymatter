@@ -123,9 +123,9 @@ const Anne: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {gameOver || day === 19 ? (
-                // TO FIX: when set final day to 18, last event is not shown
-                //         but when set to 19 error 
+            {gameOver || day === 20 ? (
+                // TO FIX: when set final day to 19, last event is not shown
+                //         but when set to 20 error 
                 <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
                     {gameOver ? (
