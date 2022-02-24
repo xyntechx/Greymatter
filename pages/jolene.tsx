@@ -257,9 +257,11 @@ const Jolene: NextPage = () => {
                         ) : (
                             <div className={styles.choices}>
                                 {options.map((option, id) => (
-                                    <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)}>
-                                        {option.choice}
-                                    </button>
+                                    <div key={id}>
+                                        <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)}>
+                                            {option.choice}
+                                        </button>
+                                    </div>
                                 ))}
                             </div>
                         )}
