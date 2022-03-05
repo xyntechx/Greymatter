@@ -39,23 +39,24 @@ const Anne: NextPage = () => {
     const [optionExplanation, setOptionExplanation] = useState(options[0].explanation);
     const [optionConsequence, setOptionConsequence] = useState(options[0].consequence);
 
-    useEffect(() => {
-        getGame();
-    }, [day]);
+    
     const getGame = async () => {
         setGame(props.game[day]);
         setQuestion(game.question);
         setOptions(game.options as option[]);
     };
-
     useEffect(() => {
-        getConsequences();
-    }, [optionConsequence]);
+        getGame();
+    }, [day]);
+
     const getConsequences = async () => {
         for (const stat in optionConsequence) {
             setStat(stat, optionConsequence);
         }
     }
+    useEffect(() => {
+        getConsequences();
+    }, [optionConsequence]);
 
     const setStat = async (
         stat: string,
@@ -248,7 +249,7 @@ const Anne: NextPage = () => {
                             </p>
                             <p className={styles.text}>{optionExplanation}</p>
                             <div className="imageDiv">
-                                <Image src={imgSrc} height={450} width={800}/> 
+                                <Image src={imgSrc} height={200} width={350}/> 
                                 {/* find a way to make this responsive and fit*/}
                             </div>
                         </>
@@ -266,11 +267,9 @@ const Anne: NextPage = () => {
                         ) : (
                             <div className={styles.choices}>
                                 {options.map((option, id) => (
-                                    <div key={id}>
-                                        <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)}>
-                                            {option.choice}
-                                        </button>
-                                    </div>
+                                    <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)} key={id}>
+                                        {option.choice}
+                                    </button>
                                 ))}
                             </div>
                         )}

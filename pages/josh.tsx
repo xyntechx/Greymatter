@@ -11,6 +11,7 @@ const Josh: NextPage = () => {
     const [day, setDay] = useState(1);
     const [answered, setAnswered] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [imgSrc, setImgSrc] = useState("/images/0.png");
 
     const [money, setMoney] = useState(props.initial.money);
     const [mental, setMental] = useState(props.initial.mental);
@@ -101,6 +102,7 @@ const Josh: NextPage = () => {
     const next = () => {
         setAnswered(false);
         setDay(day + 1);
+        setImgSrc(`/images/${day}.png`);
         if (
             money <= 0 ||
             mental <= 0 ||
@@ -197,7 +199,7 @@ const Josh: NextPage = () => {
                 </main>
             ) : (
                 <main className={styles.main}>
-                    <h1 className={styles.title}>Anne</h1>
+                    <h1 className={styles.title}>Josh</h1>
                     <section className={styles.stats}>
                         {money >= 0 ? (
                             <p className={styles.stat}>
@@ -242,6 +244,10 @@ const Josh: NextPage = () => {
                                 <b>Response</b>
                             </p>
                             <p className={styles.text}>{optionExplanation}</p>
+                            <div className="imageDiv">
+                                <Image src={imgSrc} height={200} width={350}/> 
+                                {/* find a way to make this responsive and fit*/}
+                            </div>
                         </>
                     ) : (
                         <></>
@@ -257,11 +263,9 @@ const Josh: NextPage = () => {
                         ) : (
                             <div className={styles.choices}>
                                 {options.map((option, id) => (
-                                    <div key={id}>
-                                        <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)}>
-                                            {option.choice}
-                                        </button>
-                                    </div>
+                                    <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)} key={id}>
+                                    {option.choice}
+                                </button>
                                 ))}
                             </div>
                         )}
