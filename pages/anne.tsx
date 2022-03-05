@@ -11,6 +11,7 @@ const Anne: NextPage = () => {
     const [day, setDay] = useState(0);
     const [answered, setAnswered] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [gameOverNormal, setGameOverNormal] = useState(false);
     const [imgSrc, setImgSrc] = useState("/images/0.png");
 
     const [money, setMoney] = useState(props.initial.money);
@@ -102,18 +103,20 @@ const Anne: NextPage = () => {
 
     const next = () => {
         setAnswered(false);
-        setDay(day + 1);
-        console.log(day);
-        setImgSrc(`/images/${day}.png`);
-        if (
-            money <= 0 ||
-            mental <= 0 ||
-            social <= 0 ||
-            physical <= 0 ||
-            emotional <= 0 ||
-            spiritual <= 0
-        )
-            setGameOver(true);
+        if (day === 19) setGameOverNormal(true);
+        else {
+            setDay(day + 1);
+            setImgSrc(`/images/${day}.png`);
+            if (
+                money <= 0 ||
+                mental <= 0 ||
+                social <= 0 ||
+                physical <= 0 ||
+                emotional <= 0 ||
+                spiritual <= 0
+            )
+                setGameOver(true);
+        }
     };
 
     return (
@@ -124,11 +127,17 @@ const Anne: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {gameOver || day === 20 ? (
-                // TO FIX: when set final day to 19, last event is not shown
-                //         but when set to 20 error 
+            {gameOver || gameOverNormal ? (
                 <main className={styles.mainEnd}>
                     <h1 className={styles.title}>Thank You for Playing!</h1>
+                    {gameOverNormal ? (
+                        <p className={styles.text}>
+                            You have completed your journey!
+                        </p>
+                    ) : (
+                        <></>
+                    )}
+                    
                     {gameOver ? (
                         <>
                             {money <= 0 ? (
@@ -192,9 +201,7 @@ const Anne: NextPage = () => {
                             )}
                         </>
                     ) : (
-                        <p className={styles.text}>
-                            You have completed your journey!
-                        </p>
+                        <></>
                     )}
                     <br />
                     <Link href="/">
