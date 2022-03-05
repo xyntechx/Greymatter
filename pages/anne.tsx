@@ -31,16 +31,19 @@ const Anne: NextPage = () => {
             physical: number;
             emotional: number;
             spiritual: number;
-        }
-    }
+        };
+    };
 
     const [game, setGame] = useState(props.game[0]);
     const [question, setQuestion] = useState(game.question);
     const [options, setOptions] = useState(game.options as option[]);
-    const [optionExplanation, setOptionExplanation] = useState(options[0].explanation);
-    const [optionConsequence, setOptionConsequence] = useState(options[0].consequence);
+    const [optionExplanation, setOptionExplanation] = useState(
+        options[0].explanation
+    );
+    const [optionConsequence, setOptionConsequence] = useState(
+        options[0].consequence
+    );
 
-    
     const getGame = async () => {
         setGame(props.game[day]);
         setQuestion(game.question);
@@ -54,7 +57,7 @@ const Anne: NextPage = () => {
         for (const stat in optionConsequence) {
             setStat(stat, optionConsequence);
         }
-    }
+    };
     useEffect(() => {
         getConsequences();
     }, [optionConsequence]);
@@ -137,7 +140,7 @@ const Anne: NextPage = () => {
                     ) : (
                         <></>
                     )}
-                    
+
                     {gameOver ? (
                         <>
                             {money <= 0 ? (
@@ -256,7 +259,7 @@ const Anne: NextPage = () => {
                             </p>
                             <p className={styles.text}>{optionExplanation}</p>
                             <div className="imageDiv">
-                                <Image src={imgSrc} height={200} width={350}/> 
+                                <Image src={imgSrc} height={200} width={350} />
                                 {/* find a way to make this responsive and fit*/}
                             </div>
                         </>
@@ -274,7 +277,15 @@ const Anne: NextPage = () => {
                         ) : (
                             <div className={styles.choices}>
                                 {options.map((option, id) => (
-                                    <button className={id % 2 == 0 ? styles.buttonYes : styles.buttonNo} onClick={() => answer(id)} key={id}>
+                                    <button
+                                        className={
+                                            id % 2 == 0
+                                                ? styles.buttonYes
+                                                : styles.buttonNo
+                                        }
+                                        onClick={() => answer(id)}
+                                        key={id}
+                                    >
                                         {option.choice}
                                     </button>
                                 ))}
